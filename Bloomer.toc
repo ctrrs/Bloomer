@@ -1,0 +1,13 @@
+## Interface: 120000
+## Title: Bloomer
+## Notes: Lightweight lifebloom warnings.
+## Author: fae
+## Version: 1.0
+## SavedVariables: BloomerDB
+
+# Libraries
+Libs\LibSharedMedia-3.0\LibStub\LibStub.lua
+Libs\LibSharedMedia-3.0\CallbackHandler-1.0\CallbackHandler-1.0.lua
+Libs\LibSharedMedia-3.0\LibSharedMedia-3.0\LibSharedMedia-3.0.lua
+
+Bloomer.lua
