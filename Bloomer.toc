@@ -6,6 +6,8 @@
 ## Category: fae Utilities
 ## IconTexture: Interface\AddOns\Bloomer\bloomerzoom.tga
 ## SavedVariables: BloomerDB
+## X-Wago-ID: rNkykeKa
+## X-Curse-Project-ID: 1520777
 
 # Libraries
 Libs\LibSharedMedia-3.0\LibStub\LibStub.lua

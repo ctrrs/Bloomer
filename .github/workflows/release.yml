@@ -1,0 +1,21 @@
+name: Release Addon
+
+on:
+  push:
+    tags:
+      - 'v*' # Se activa cuando subes una etiqueta que empieza por 'v' (ej. v1.0.1)
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Package and Release
+        uses: BigWigsMods/packager@master
+        env:
+          CF_API_KEY: ${{ secrets.CF_API_KEY }}
+          WAGO_API_TOKEN: ${{ secrets.WAGO_API_TOKEN }}
