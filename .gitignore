@@ -1,0 +1,21 @@
+# OS junk files
+[Dd]esktop.ini
+Thumbs.db
+.DS_Store
+
+# Zed editor
+.zed/
+
+# Gemini CLI / LLM artifacts
+*.log
+.gemini/
+GEMINI.md
+
+# WoW Addon specific junk
+*.bak
+*.old
+*.tmp
+*.lua.bak
+
+# Innecesarios detectados
+Bloomer.
