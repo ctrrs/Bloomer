@@ -11,19 +11,19 @@ local LSM = LibStub and LibStub("LibSharedMedia-3.0", true)
 
 -- Valores por defecto
 local DEFAULTS = {
-    missingText = "LIFEBLOOM MISSING!",
-    refreshText = "REFRESH LIFEBLOOM!",
-    fontSize = 24,
+    missingText = "no bloom",
+    refreshText = "bloom",
+    fontSize = 22,
     outline = "OUTLINE",
-    hasShadow = true,
+    hasShadow = false,
     posX = 0,
-    posY = 150,
-    alertType = "SOUND", -- "SOUND", "TTS", "NONE"
-    missingSound = "Raid Warning",
-    ttsText = "Lifebloom",
-    ttsVoice = 0,
+    posY = -79,
+    alertType = "TTS", -- "SOUND", "TTS", "NONE"
+    missingSound = "Sonar",
+    ttsText = "bloom",
+    ttsVoice = 1,
     ttsRate = 0,
-    ttsVolume = 100
+    ttsVolume = 65
 }
 
 -- Variables de estado
@@ -284,9 +284,26 @@ local function CreateOptionsPanel()
     testModeBtn:SetSize(150, 25); testModeBtn:SetPoint("LEFT", testBtn, "RIGHT", 10, 0); testModeBtn:SetText("Toggle Test Mode")
     testModeBtn:SetScript("OnClick", function() forceShow = not forceShow; print("|cFF00FF00Bloomer:|r Test mode " .. (forceShow and "ON" or "OFF")) end)
 
+    local resetBtn = CreateFrame("Button", nil, panel, "UIPanelButtonTemplate")
+    resetBtn:SetSize(150, 25); resetBtn:SetPoint("TOPLEFT", 16, -470); resetBtn:SetText("Reset to Defaults")
+    resetBtn:SetScript("OnClick", function() StaticPopup_Show("BLOOMER_CONFIRM_RESET") end)
+
     category = Settings.RegisterCanvasLayoutCategory(panel, "Bloomer")
     Settings.RegisterAddOnCategory(category)
 end
+
+StaticPopupDialogs["BLOOMER_CONFIRM_RESET"] = {
+    text = "Are you sure you want to reset Bloomer settings to defaults? This will reload the UI.",
+    button1 = "Yes",
+    button2 = "No",
+    OnAccept = function()
+        BloomerDB = {}
+        ReloadUI()
+    end,
+    timeout = 0,
+    whileDead = true,
+    hideOnEscape = true,
+}
 
 frame:SetScript("OnUpdate", function(self, elapsed)
     self.timer = (self.timer or 0) + elapsed
